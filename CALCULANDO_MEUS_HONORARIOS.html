@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html labg="pt-BR">
+<head>
+    <meta charset="UFT-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Adriano Freire">
+    <title>Calculando meus honorários</title>
+</head>
+<body>
+    <h1>Vamos cálcular os honorários!</h1>
+    <p>Preencha os campos abaixo com todas as informações pedidas.</p>
+    <label>Honorários recebidos: R$</label>
+    <input type="number" name="honorarios" id="honorarios">
+        
+    <br><br>
+
+    <label>Porcentagem Para a Associada:</label>
+    <input type="number" name="associada" id="associada">
+    <label>%</label>
+
+    <br><br>
+
+    <input type="button" value="Calcular" onclick="calcular()">
+
+    <div id="res"> 
+
+    </div>
+    
+    <script> 
+        function calcular() {
+            var valor_recebido = document.getElementById('honorarios').value;
+            var porcentagem_associada = document.getElementById('associada').value;
+            var res = document.getElementById('res');
+            var recebido = Number(valor_recebido);
+            var porcentagem = Number(porcentagem_associada);
+            var honorario_associada = porcentagem * recebido/100;
+            var recebido_escritorio = valor_recebido-honorario_associada
+            var caixa_escritorio = recebido_escritorio * 0.1;
+            var honorario_socios = recebido_escritorio * 0.9;
+            res.innerHTML = `<p>A <strong>Associada</strong> receberá a quantia de R$ ${honorario_associada}.</p>`
+            res.innerHTML += `<p>O <strong>Escritório</strong> receberá para seu caixa a quantia de R$ ${caixa_escritorio}.</p>`
+            res.innerHTML += `<p>Cada um dos três <strong>Sócios</strong> receberá a quantia de R$ ${honorario_socios}.</p>`
+        }   
+
+    </script>
+</body>
+
+</html>
